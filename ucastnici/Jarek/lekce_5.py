@@ -28,10 +28,12 @@ def prihlaseni(text_username: str,text_password: str ):
 
 
 if __name__ == "__main__":
-    udaje = { "standart": { "username": "standart_user",
-                             "password": "secret_sauce"},
-           "problem": { "username": "problem_user",
-                       "password": "secret_sauce"} }
+    udaje = { 
+        "standart": { "username": "standart_user",
+                       "password": "secret_sauce"},
+
+        "problem": { "username": "problem_user",
+                     "password": "secret_sauce"} }
     
     for key in udaje.keys():
         prihlaseni(udaje[key]["username"], udaje[key]["password"])
