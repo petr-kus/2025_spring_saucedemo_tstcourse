@@ -1,18 +1,21 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from  selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
 
 import time
 from selenium.webdriver.firefox.options import Options
 
 
-
-def prihlaseni(text_username: str,text_password: str ):
+def test_prihlasni(text_username: str,text_password: str ):
     Option = Options()
     Option.add_argument('start-maximized')
 
+    name_web = "https://www.saucedemo.com/"
+    
     driver = webdriver.Firefox()
-    driver.get("https://www.saucedemo.com/")
+    time.sleep(2)
+    driver.get(name_web)
+
 
     username = driver.find_element(By.ID,'user-name')
     username.send_keys(text_username)
@@ -24,18 +27,13 @@ def prihlaseni(text_username: str,text_password: str ):
     login_button.click()
 
     driver.close()
-
-
-
+    
 if __name__ == "__main__":
     udaje = { 
-        "standart": { "username": "standart_user",
+        "standart": { "username": "standard_user",
                        "password": "secret_sauce"},
-
-        "problem": { "username": "problem_user",
-                     "password": "secret_sauce"} }
+                         }
     
-    for key in udaje.keys():
-        prihlaseni(udaje[key]["username"], udaje[key]["password"])
+    test_prihlasni(udaje["standart"]["username"], udaje["standart"]["password"])
         
         
