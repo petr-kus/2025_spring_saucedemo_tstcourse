@@ -2,8 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+
 import time
 from selenium.webdriver.firefox.options import Options
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 
 
 def test_prihlasni(text_username: str,text_password: str ):
@@ -11,23 +13,63 @@ def test_prihlasni(text_username: str,text_password: str ):
     Option.add_argument('start-maximized')
 
     name_web = "https://www.saucedemo.com/"
-    
-    driver = webdriver.Firefox()
-    time.sleep(2)
-    driver.get(name_web)
+    try:
+        # open browser
+        driver = webdriver.Firefox()
+        time.sleep(2)
+        driver.get(name_web)
+
+        # entering username
+        username = driver.find_element(By.ID,'user-name')
+        username.send_keys(text_username)
+
+        # entering password
+        password = driver.find_element(By.ID,'password')
+        password.send_keys(text_password)
+
+        # click on login button, login on web
+        login_button = driver.find_element(By.ID,'login-button')
+        login_button.click()   
+
+        all_buttons_add_to_cart = driver.find_elements(By.XPATH, "//button[starts-with(@id, 'add-to-cart-')]")
+        if not all_buttons_add_to_cart:
+            raise NoSuchElementException("Element not found")
+        for button in all_buttons_add_to_cart:
+            button.click()
+            time.sleep(1)
+        
+
+        # click on shopping cart, entering
+        login_button = driver.find_element(By.ID,'shopping_cart_container')
+        login_button.click()   
+
+        # click on continue shopping, return to the main page
+        login_button = driver.find_element(By.ID,'continue-shopping')
+        login_button.click()   
+
+        all_button_remove = driver.find_elements(By.XPATH, "//button[starts-with(@id, 'remove-')]")
+
+        if not all_button_remove:
+            raise NoSuchElementException("Element not found")
+        
+        for button in all_button_remove:
+            button.click()
+            time.sleep(1)
 
 
-    username = driver.find_element(By.ID,'user-name')
-    username.send_keys(text_username)
+        with open('log.txt', 'w') as file:
+            file.writelines("a")
+        
+    except NoSuchElementException as e:
+        print(e)
 
-    password = driver.find_element(By.ID,'password')
-    password.send_keys(text_password)
+    finally:
+        time.sleep(2)
+        driver.close()
 
-    login_button = driver.find_element(By.ID,'login-button')
-    login_button.click()
 
-    driver.close()
-    
+        
+# run the test
 if __name__ == "__main__":
     udaje = { 
         "standart": { "username": "standard_user",
