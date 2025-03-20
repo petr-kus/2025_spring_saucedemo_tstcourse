@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 
 
-def test_prihlasni(text_username: str,text_password: str ):
+def login_test(text_username: str,text_password: str ):
     Option = Options()
     Option.add_argument('start-maximized')
 
@@ -18,6 +18,7 @@ def test_prihlasni(text_username: str,text_password: str ):
         driver = webdriver.Firefox()
         time.sleep(2)
         driver.get(name_web)
+        assert "Swag Labs" in driver.title "Špatný název stránky"
 
         # entering username
         username = driver.find_element(By.ID,'user-name')
@@ -31,9 +32,14 @@ def test_prihlasni(text_username: str,text_password: str ):
         login_button = driver.find_element(By.ID,'login-button')
         login_button.click()   
 
+        # get all buttons with name "add to cart"
         all_buttons_add_to_cart = driver.find_elements(By.XPATH, "//button[starts-with(@id, 'add-to-cart-')]")
+
+        # if not found, raise exception
         if not all_buttons_add_to_cart:
             raise NoSuchElementException("Element not found")
+        
+        # add all items on page to the cart
         for button in all_buttons_add_to_cart:
             button.click()
             time.sleep(1)
@@ -47,19 +53,18 @@ def test_prihlasni(text_username: str,text_password: str ):
         login_button = driver.find_element(By.ID,'continue-shopping')
         login_button.click()   
 
+        # get all buttons with name "remove"
         all_button_remove = driver.find_elements(By.XPATH, "//button[starts-with(@id, 'remove-')]")
 
+        # if not found, raise exception
         if not all_button_remove:
             raise NoSuchElementException("Element not found")
         
+        #  all items on page where are in the cart, remove
         for button in all_button_remove:
             button.click()
             time.sleep(1)
 
-
-        with open('log.txt', 'w') as file:
-            file.writelines("a")
-        
     except NoSuchElementException as e:
         print(e)
 
@@ -76,6 +81,6 @@ if __name__ == "__main__":
                        "password": "secret_sauce"},
                          }
     
-    test_prihlasni(udaje["standart"]["username"], udaje["standart"]["password"])
+    login_test(udaje["standart"]["username"], udaje["standart"]["password"])
         
         
