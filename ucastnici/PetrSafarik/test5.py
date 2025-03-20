@@ -161,7 +161,7 @@ def do_smoke_test_order_item(controller: ItemOrderViewController):
     controller.finish_button()
 
 @test_case
-def do_test_incorrect_user_name(controller: ItemOrderViewController):
+def do_test_login_incorrect_user_name(controller: ItemOrderViewController):
     is_webdriver_initialized = controller.initialize_webdriver("https://www.saucedemo.com/")
     assert is_webdriver_initialized, "Cannot open webpage"
     controller.login_enter_user_name("incorrect_user_name")
@@ -171,7 +171,7 @@ def do_test_incorrect_user_name(controller: ItemOrderViewController):
     assert error_message == "Epic sadface: Username and password do not match any user in this service", "incorrect error message"
 
 @test_case
-def do_test_incorrect_password(controller: ItemOrderViewController):
+def do_test_login_incorrect_password(controller: ItemOrderViewController):
     is_webdriver_initialized = controller.initialize_webdriver("https://www.saucedemo.com/")
     assert is_webdriver_initialized, "Cannot open webpage"
     controller.login_enter_user_name("standard_user")
@@ -188,7 +188,7 @@ def do_test_incorrect_url(controller: ItemOrderViewController):
 
 if __name__ == "__main__":    
     runner = TestCaseRunner() 
-    test_cases_for_execution = [do_smoke_test_order_item, do_test_incorrect_user_name, do_test_incorrect_password, do_test_incorrect_url] 
+    test_cases_for_execution = [do_smoke_test_order_item, do_test_login_incorrect_user_name, do_test_login_incorrect_password, do_test_incorrect_url] 
     
     for test_case in test_cases_for_execution:
         item_order_view_controller = ItemOrderViewController()
