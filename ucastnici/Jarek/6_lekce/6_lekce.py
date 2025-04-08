@@ -20,5 +20,6 @@ logging.info("Spouštím hlavní testovací modul")
 
 import webtest.logintest
 
-if __name__ == '__main__':
+# main
+if __name__ == '__main__': 
     unittest.main(module=webtest.logintest, verbosity=2)
