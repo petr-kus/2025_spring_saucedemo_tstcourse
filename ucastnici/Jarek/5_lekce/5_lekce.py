@@ -18,7 +18,7 @@ def login_test(text_username: str,text_password: str ):
         driver = webdriver.Firefox()
         time.sleep(2)
         driver.get(name_web)
-        assert "Swag Labs" in driver.title "Špatný název stránky"
+        assert "Swag Labs" in driver.title, "Špatný název stránky"
 
         # entering username
         username = driver.find_element(By.ID,'user-name')
