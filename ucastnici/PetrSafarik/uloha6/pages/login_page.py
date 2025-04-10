@@ -10,18 +10,25 @@ class LoginPage:
         self.password_textbox = (By.ID, "password")
         self.login_button = (By.ID, "login-button")
         self.error_message = (By.XPATH, "//div[@id='login_button_container']//h3[@data-test='error']")
-    
-    def open_page(self, url):
-        self.driver.get(url)
+        self.url = "https://www.saucedemo.com/"
+        self.user_name = "standard_user"
+        self.password = "secret_sauce"
+        self.invalid_password = "blabla"
+
+    def open_page(self):
+        self.driver.get(self.url)
         actual_title = self.driver.title
         return actual_title
 
-    def enter_user_name(self, user_name):
-        self.driver.find_element(*self.username_textbox).send_keys(user_name)
+    def enter_user_name(self):
+        self.driver.find_element(*self.username_textbox).send_keys(self.user_name)
 
-    def enter_password(self, password):
-        self.driver.find_element(*self.password_textbox).send_keys(password)
-    
+    def enter_password(self):
+        self.driver.find_element(*self.password_textbox).send_keys(self.password)
+
+    def enter_invalid_password(self):
+        self.driver.find_element(*self.password_textbox).send_keys(self.invalid_password)
+
     def click_login_button(self):
         self.driver.find_element(*self.login_button).click()
 
