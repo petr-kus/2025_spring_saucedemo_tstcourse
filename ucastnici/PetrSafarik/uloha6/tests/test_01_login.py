@@ -2,10 +2,9 @@ from selenium import webdriver
 import sys
 import logging
 import pytest
-# import pytest_html
 
 sys.path.append('../')
-from testing_6.pages.login_page import LoginPage
+from uloha6.pages.login_page import LoginPage
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
