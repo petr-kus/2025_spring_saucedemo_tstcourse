@@ -12,8 +12,8 @@ driver.get("https://www.saucedemo.com/")
 
 # Find username and password fields and login button
 field_username = driver.find_element(By.ID, "user-name")
-field_username.send_keys("problem_user")
-# field_username.send_keys("standard_user")
+# field_username.send_keys("problem_user")
+field_username.send_keys("standard_user")
 
 field_password = driver.find_element(By.ID, "password")
 field_password.send_keys("secret_sauce")
