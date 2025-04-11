@@ -10,6 +10,7 @@ import time
 
 #TODO: Step 0 - Lekce 8 - mit aspon dva test case jako skript co mohou byt atomicke (login, inventory badge? a menu?)
 #TODO: Step 1 - Lekce 8 - prepsat test do OOP + POM struktury (udelat invisible predavani driveru!)
+
 #TODO: Step 2 - Lekce 8 - zkopirovat Step 1 a prepsat do PyTestu
 #TODO: Step 3 - Lekce 8 - zkopirovat Step 1 a prepsat do Robot Frameworku (s pouzitim nasi OOP a POM - just import)
 #TODO: Step 4 - Lekce 8 - prepsat do Robot Frameworku (s pouzitim OpenSource libky - napr. Browser Lib - opravdu prepis)
