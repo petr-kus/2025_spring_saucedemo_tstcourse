@@ -10,7 +10,7 @@ import time
 
 test_page = "https://www.saucedemo.com/"
 username = "standard_user"
-password = "standard_user"
+password = "seacrate_sauce"
 
 def log_test_false_for_me(e):
         print(f"Test xyz faild with error {e}")
@@ -37,6 +37,7 @@ def test_login_user(username,password):
 def teardown():
     driver.quit()
 
+#TEST EXECUTION
 driver = setup(test_page)
 test_login_user(username,password)
 teardown()
