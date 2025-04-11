@@ -6,6 +6,7 @@ import pytest
 sys.path.append('../')
 from uloha6.pages.login_page import LoginPage
 
+
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s | %(name)s | %(levelname)s | %(message)s')
