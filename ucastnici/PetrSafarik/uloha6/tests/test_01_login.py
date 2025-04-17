@@ -22,7 +22,7 @@ class TestLoginPage:
 
     @pytest.fixture()
     def fixture(self):
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         expected_title = "Swag Labs"
         yield driver, expected_title
         driver.close()

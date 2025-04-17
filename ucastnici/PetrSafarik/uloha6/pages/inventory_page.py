@@ -3,13 +3,14 @@ from selenium.common.exceptions import WebDriverException
 
 
 class InventoryPage:
+    
+    page_title = (By.XPATH, "//span[@data-test='title']")
+    number_of_items_in_cart = (By.XPATH, "//span[@data-test='shopping-cart-badge']")
+    add_backpack_to_cart = (By.ID, "add-to-cart-sauce-labs-backpack")
+    enter_the_cart = (By.XPATH, "//a[@data-test='shopping-cart-link']")
 
     def __init__(self, driver):
         self.driver = driver
-        self.page_title = (By.XPATH, "//span[@data-test='title']")
-        self.number_of_items_in_cart = (By.XPATH, "//span[@data-test='shopping-cart-badge']")
-        self.add_backpack_to_cart = (By.ID, "add-to-cart-sauce-labs-backpack")
-        self.enter_the_cart = (By.XPATH, "//a[@data-test='shopping-cart-link']")
 
     def check_page(self):
         actual_title = self.driver.find_element(*self.page_title).text
