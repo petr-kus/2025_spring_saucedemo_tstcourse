@@ -7,11 +7,15 @@ class LoginPage:
     submit_button = (By.ID, "login-button")
     page_url = "https://www.saucedemo.com/"
 
-    def __init__(self):
+    #not ideal implementation during the lesson
+    #def __init__(self):
+    #    browser = webdriver.Chrome()
+    #    self.driver = browser
+
+    #better implementation 
+    def open_page(self,url):
         browser = webdriver.Chrome()
         self.driver = browser
-
-    def open_page(self,url):
         self.driver.get(url)
 
     def we_are_on_page(self):
