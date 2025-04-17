@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     A test suite for valid login.
-Library           LoginPage.py
+Library           saucedemo/LoginPage.py
 Library           SeleniumLibrary
 
 *** Test Cases ***
@@ -28,5 +28,3 @@ Another login ${username} with ${password}
     Input Text  user-name  ${username}
     Input Text  password  ${password}
     Click Button  login-button
-
-
