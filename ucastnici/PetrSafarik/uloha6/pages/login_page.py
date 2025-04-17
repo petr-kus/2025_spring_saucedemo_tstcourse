@@ -3,22 +3,23 @@ from selenium.common.exceptions import WebDriverException
 
 
 class LoginPage:
+    
+    username_textbox = (By.ID, "user-name")
+    password_textbox = (By.ID, "password")
+    login_button = (By.ID, "login-button")
+    error_message = (By.XPATH, "//div[@id='login_button_container']//h3[@data-test='error']")
+    url = "https://www.saucedemo.com/"
+    user_name = "standard_user"
+    password = "secret_sauce"
+    invalid_password = "blabla"
 
     def __init__(self, driver):
         self.driver = driver
-        self.username_textbox = (By.ID, "user-name")
-        self.password_textbox = (By.ID, "password")
-        self.login_button = (By.ID, "login-button")
-        self.error_message = (By.XPATH, "//div[@id='login_button_container']//h3[@data-test='error']")
 
         #TODO: Lektor - nize - toto tady nejspise nema byt.
-        self.url = "https://www.saucedemo.com/"
 
         #TODO: Lektor - toto tady urcite nema byt.
-        self.user_name = "standard_user"
-        self.password = "secret_sauce"
-        self.invalid_password = "blabla"
-
+  
     def open_page(self):
         self.driver.get(self.url)
         actual_title = self.driver.title

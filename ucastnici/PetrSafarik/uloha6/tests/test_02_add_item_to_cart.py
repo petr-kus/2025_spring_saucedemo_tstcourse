@@ -22,7 +22,7 @@ class TestAddToCart:
 
     @pytest.fixture()
     def fixture(self):
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         login_page = LoginPage(driver)
         login_page.open_page()
         login_page.enter_user_name()

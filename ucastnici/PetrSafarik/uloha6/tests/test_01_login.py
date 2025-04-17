@@ -35,9 +35,8 @@ class TestLoginPage:
 
     @pytest.fixture()
     def fixture(self):
-        #TODO: Lektor - pojmenoval bych to jinak (browser, page, tab, ... ?) pro budovani Domain Language a proto ze fixture je skoro "klicove slovo".
+        driver = webdriver.Firefox()
         #TODO: Lektor - nevyuzita prilezitost budovat langauge
-        driver = webdriver.Chrome()
         expected_title = "Swag Labs"
         #TODO: Lektor - Moc pekny trik predat si oboji i s verifikacni casti, jen je to moc "zadratovane" uvnitr. Zparametrizoval bych si tu fixture.
         yield driver, expected_title
