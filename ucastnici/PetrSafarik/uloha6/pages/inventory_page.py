@@ -23,8 +23,9 @@ class InventoryPage:
         return number.text
 
     def add_item_to_cart(self):
-        # Add item Backpack to the cart
+        # Add item Backpack to the cart 
         backpack_to_cart = self.driver.find_element(*self.add_backpack_to_cart)
+        #TODO: Lektor - tady se dela volba uvnitr, zviditelnil bych ji ven do test casu
         backpack_to_cart.click()
 
     def enter_cart_page(self):
