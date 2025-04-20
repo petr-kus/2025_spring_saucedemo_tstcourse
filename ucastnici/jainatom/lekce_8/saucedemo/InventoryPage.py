@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils import wait_for_element, wait_for_element_with_text
 import random
 import logging
 import time
@@ -30,28 +31,11 @@ class InventoryPage:
 
         for button in buttons_to_add:
             self.add_product_to_cart(button)
-            logging.debug(f"Item '{button}' was added to cart.")
+            logging.info(f"Item '{button}' was added to cart.")
 
-        time.sleep(0.5)
+        wait_for_element_with_text(self.driver, 5, (By.CSS_SELECTOR, "span[data-test='shopping-cart-badge']"), str(num_to_add))
         cart_count = int(self.driver.find_element(*self.cart_badge).text)
         assert cart_count == num_to_add, f"Expected '{num_to_add}' items, but found '{cart_count}' in cart."
-
-    def remove_from_cart_all_products(self):
-        cart_count = int(self.driver.find_element(*self.cart_badge).text)
-        remove_from_cart_buttons = self.driver.find_elements(*self.remove_from_cart_button)
-        assert len(remove_from_cart_buttons) == cart_count, f"Expected '{cart_count}' remove buttons, but found '{len(remove_from_cart_buttons)}' remove buttons."
-
-        for button in remove_from_cart_buttons:
-            button.click()
-            cart_count = cart_count-1
-            time.sleep(0.5)
-            if not cart_count == 0:
-                current_cart_count = int(self.driver.find_element(*self.cart_badge).text)
-                assert cart_count == current_cart_count, f"Expected '{cart_count}' items, but found '{current_cart_count}' in cart."
-            else:
-                cart_badge_elements = self.driver.find_elements(*self.cart_badge)
-                assert len(cart_badge_elements) == 0, "Cart badge is still visible after removing all items!"
-            logging.debug(f"Item  '{button}' was correctly removed from the cart.")
 
     def verify_login(self):
         """Checks that Products is loaded in header."""

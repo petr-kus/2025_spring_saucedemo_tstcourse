@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from utils import wait_for_element
-# from utils import pytest_runtest_call
 import os
 from saucedemo.LoginPage import LoginPage
 from saucedemo.InventoryPage import InventoryPage
@@ -42,21 +41,21 @@ if not os.path.exists("screenshots"):
 def pytest_runtest_call(item):
     """Pytest hook to take a screenshot on test failure."""
     outcome = yield
-    if outcome.excinfo is not None:  # Check if the test failed
-        test_name = item.name  # Get the name of the test
+    if outcome.excinfo is not None:  
+        test_name = item.name  
         screenshot_path = f"screenshots/{test_name}_failure.png"
         try:
-            browser.get_screenshot_as_file(screenshot_path)  # Save the screenshot
+            browser.get_screenshot_as_file(screenshot_path)  
             print(f"Screenshot saved: {screenshot_path}")
         except Exception as e:
             print(f"Failed to capture screenshot: {e}")
 
 #TEST CASES
-def test_login_the_user(username,password):
+def test_login_the_user(username, password):
     """This test case checks that user can be logged in."""
     login_page = LoginPage(browser)
     inventory_page = InventoryPage(browser)
-    login_page.login_user(username,password)
+    login_page.login_user(username, password)
     wait_for_element(browser, 2, (By.CLASS_NAME, 'title'))
     inventory_page.we_are_on_page()
     inventory_page.verify_login()
