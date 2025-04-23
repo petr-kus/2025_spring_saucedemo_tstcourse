@@ -20,7 +20,7 @@ def wait_for_element(driver, by_locator, timeout=3):
         element = wait.until(EC.visibility_of_element_located(by_locator))
         return element
     except Exception as e:
-        logging.error(f"⛔ Chyba při čekání na element {by_locator}: {e}")
+        logging.error(f"⛔ Chyba pri cekani na element {by_locator}: {e}")
         print(f"⛔ Chyba při čekání na element {by_locator}: {e}")
         return None
 
@@ -38,6 +38,7 @@ def setup_logging():
                         datefmt='%Y-%m-%d %H:%M:%S')
     
 URL = "https://www.saucedemo.com/"
+
 CREDENTIALS = {
     'standard_user': 'secret_sauce',
     'problem_user': 'secret_sauce'
