@@ -8,6 +8,10 @@ import time
 from functools import wraps
 from functools import partial
 
+#TODO: podrobny feedback byl v/po lekci 5 myslim. Kde jsme to opravdu prosli.
+#TODO: Obecne velmi dobry styl premysleni nad psanim testu, jen teda psat si vlastni "test framework" je trosku over kill (ale to se ukze prave v pozdejisch lekcich). 
+#TODO: Je krasne videt ze ta potreba Test Frameworku a toho test exekutoru uz je tam ted... .
+
 class ItemOrderViewController:
    
     def initialize_webdriver(self, url):

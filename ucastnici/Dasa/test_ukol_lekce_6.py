@@ -97,6 +97,7 @@ def add_items_to_cart(driver):
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(Locators.ADD_TO_CART_BUTTONS)
         )
+        #TODO - Lektor - toto explicitini cekani zde nema smysl vzhledem k defaultni load strategy, ktere ceka na nacteni stranky (takze to tam uz je kdyz bezi tento kod). 
 
         buttons_add_to_cart = driver.find_elements(*Locators.ADD_TO_CART_BUTTONS)
         
