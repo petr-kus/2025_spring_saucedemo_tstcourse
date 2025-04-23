@@ -11,7 +11,7 @@ import logging
 logging.basicConfig(filename='log_jt_test_login_v3.log', level=logging.INFO)
 logging.info("Logging setup successfully!")
 
-print("Current working directory:", os.getcwd())
+# print("Current working directory:", os.getcwd())
 
 test_page = "https://www.saucedemo.com/"
 valid_user = 'standard_user'
@@ -34,25 +34,28 @@ def username():
 def password():
     return user_password
 
-if not os.path.exists("screenshots"):
-    os.makedirs("screenshots")
+# if not os.path.exists("screenshots"):
+#     os.makedirs("screenshots")
 
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_call(item):
-    """Pytest hook to take a screenshot on test failure."""
-    outcome = yield
-    if outcome.excinfo is not None:  
-        test_name = item.name  
-        screenshot_path = f"screenshots/{test_name}_failure.png"
-        try:
-            browser.get_screenshot_as_file(screenshot_path)  
-            print(f"Screenshot saved: {screenshot_path}")
-        except Exception as e:
-            print(f"Failed to capture screenshot: {e}")
+# @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+# def pytest_runtest_call(item):
+#     """Pytest hook to take a screenshot on test failure."""
+#     outcome = yield
+#     if outcome.excinfo is not None:  
+#         test_name = item.name  
+#         screenshot_path = f"screenshots/{test_name}_failure.png"
+#         try:
+#             browser.get_screenshot_as_file(screenshot_path)  
+#             print(f"Screenshot saved: {screenshot_path}")
+#         except Exception as e:
+#             print(f"Failed to capture screenshot: {e}")
 
 #TEST CASES
+def pytest_html_report_title(report):
+    report.title = "test_login_v3.py report"
+
 def test_login_the_user(username, password):
-    """This test case checks that user can be logged in."""
+    """Check that user can be logged in."""
     login_page = LoginPage(browser)
     inventory_page = InventoryPage(browser)
     login_page.login_user(username, password)
@@ -61,7 +64,7 @@ def test_login_the_user(username, password):
     inventory_page.verify_login()
 
 def test_logout_the_user():
-    """This test case checks that user can be logged out."""
+    """Check that user can be logged out."""
     menu_bar = Menu(browser)
     login_page = LoginPage(browser)
     wait_for_element(browser, 2, (By.CLASS_NAME, 'title'))
@@ -72,8 +75,8 @@ def test_logout_the_user():
     login_page.we_are_on_page()
     login_page.verify_logout()
 
-log_path = 'log_jt_test_login_v3.log'
-if os.path.exists(log_path):
-    print("Log file created:", log_path)
-else:
-    print("Log file not found:", log_path)
+# log_path = 'log_jt_test_login_v3.log'
+# if os.path.exists(log_path):
+#     print("Log file created:", log_path)
+# else:
+#     print("Log file not found:", log_path)

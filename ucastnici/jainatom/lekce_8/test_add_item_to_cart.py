@@ -7,26 +7,12 @@ from saucedemo.InventoryPage import InventoryPage
 import pytest
 import logging
 
-# logging.basicConfig(filename='log_jt_test_add_item_to_cart.log', level=logging.INFO)
-# logging.info("Logging setup successfully!")
-
 logging.basicConfig(
     filename='log_jt_test_add_item_to_cart.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
-
-@pytest.fixture
-def example_fixture():
-    logging.info("Fixture setup")
-    yield
-    logging.info("Fixture teardown")
-
-def test_example(example_fixture):
-    logging.info("Test started")
-    assert 1 == 1
-    logging.info("Test completed")
-
+logging.info("Logging setup successfully!")
 test_page = "https://www.saucedemo.com/"
 valid_user = 'standard_user'
 user_password = "secret_sauce"
@@ -49,7 +35,7 @@ def password():
 
 #TEST CASE
 def test_cart_badge_behavior(username, password):
-    """This test case puts random amount of items into cart and checks its volume."""
+    """Put random amount of items into cart and check its volume."""
     login_page = LoginPage(browser)
     inventory_page = InventoryPage(browser)
     login_page.login_user(username, password)
@@ -58,6 +44,5 @@ def test_cart_badge_behavior(username, password):
     inventory_page.verify_login()
     wait_for_element(browser, 2, (By.CLASS_NAME, 'title'))
     inventory_page.add_random_products_to_cart()
-    print(f"Current working directory: {os.getcwd()}")
 
   
