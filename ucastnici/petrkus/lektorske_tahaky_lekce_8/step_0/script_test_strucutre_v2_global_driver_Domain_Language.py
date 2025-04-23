@@ -6,6 +6,7 @@ import random
 import logging
 import time
 logging.basicConfig(filename='my_log.log', level=logging.DEBUG)
+
 #HANDY FUNCTIONS (low keywords)
 def slowdown():
     time.sleep(2)
@@ -63,13 +64,12 @@ def test_cart_badge_behavior():
         num_to_add = random.randint(1, len(add_to_cart_buttons))
         buttons_to_add = random.sample(add_to_cart_buttons, num_to_add)
         
-
         logging.debug(f"Was selected  '{num_to_add}' items to add to cart.")
 
         for button in buttons_to_add:
             slowdown()
             button.click()
-            logging.debug(f"Item  '{button}' was added to cart.")
+            logging.debug(f"Item '{button}' was added to cart.")
 
         time.sleep(0.5)
         cart_count = int(driver.find_element(*cart_badge).text)

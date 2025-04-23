@@ -21,6 +21,7 @@ class LoginTest(unittest.TestCase):
         self.login_page.open_browser(self.WEB_URL)
         self.login_page.login(self.USER_NAME, self.PASSWORD)
         self.assertIn("inventory", self.driver.current_url)
+        #TODO: Lektor - principielne tomu tady neni moc co vytknout na teto urovni. Snad jen nebere to screenshoty :-).
 
     def tearDown(self):
         logging.info("Ukončení testu a zavření prohlížeče")
