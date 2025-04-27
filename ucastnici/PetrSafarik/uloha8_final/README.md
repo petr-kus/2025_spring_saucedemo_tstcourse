@@ -3,14 +3,17 @@
 
 ## Scope
 
-These scripts run test case TAC/T3 in project TA Jaro 2025 in Jira:
+These scripts run the test case TAC/T3 in project TA Jaro 2025 in Jira:
 
 https://petrkus.atlassian.net/projects/TAC?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:com.kanoah.test-manager__main-project-page#!/v2/testCase/TAC-T3
 
-## Using frameworks
+## Used frameworks
 - Pytest
 - Robot Framework
 
-## How to prepare virtual enviroment 
+## Test implementation
+- [pytest](./pytest/)
+- [robotframework](./robotframework/)
 
-- run the file install_dependencies.bat
+## Virtual enviroment preparation
+- run the file install_dependencies.ps1
