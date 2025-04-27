@@ -4,8 +4,8 @@ import logging
 import pytest
 
 sys.path.append('../')
-from uloha8_final.pages.login_page import LoginPage
-from uloha8_final.pages.inventory_page import InventoryPage
+from pages.login_page import LoginPage
+from pages.inventory_page import InventoryPage
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)

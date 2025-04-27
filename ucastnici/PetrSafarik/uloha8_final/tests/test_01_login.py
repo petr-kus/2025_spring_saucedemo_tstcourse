@@ -4,7 +4,7 @@ import logging
 import pytest
 
 sys.path.append('../')
-from uloha8_final.pages.login_page import LoginPage
+from pages.login_page import LoginPage
 # from uloha8_final.fixtures.fixtures import browsers
 
 logger = logging.getLogger()
