@@ -29,6 +29,14 @@ Tento projekt obsahuje sadu testů napsanou v [Robot Frameworku](https://robotfr
 
 ## 🔧 Instalace prostředí
 
+jednoduchá instalace
+
+```bash
+install_dependencies.ps1
+```
+
+nebo složitější
+
 ```bash
 python -m venv venv
 # Windows
