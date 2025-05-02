@@ -15,6 +15,9 @@ from pages.Menu import Menu
 
 # Konfigurace
 BASE_URL = "https://www.saucedemo.com/"
+# TODO Lektor: tahle base url ale neni vyuzita ... uvnitr LoginPage...!
+# TODO prepnuti stranky proti ktere se testuje by bylo narconejsi... .
+
 USERNAME = "standard_user"
 PASSWORD = "secret_sauce"
 
@@ -83,6 +86,9 @@ def driver(logger):
         except Exception as e:
             logger.error(f"Chyba při ukončování webdriveru: {str(e)}")
 
+
+#TODO Lektor: tohle user name a password jde urcite vyresit pomoci fixture :-). 
+#Ale mnohem vhodnejsi by bylo to poresit pomoci parametrize... . Ta fixture je 'kanon na vrabce' zbytecne neictelny.
 @pytest.fixture
 def username():
     """Fixture pro uživatelské jméno."""
@@ -100,6 +106,11 @@ def slowdown():
 
 # Testy
 def test_login_the_user(driver, username, password, logger):
+    # TODO Lektor: driver a logger bych zde uz nepredaval a nechal to na autouse... oboje.
+    # respektive predaveni driveru a loggeru bych se snazil zbavit co to jde, ale chapu ze toto je nejsnazsi a funkcni reseni si to predat.
+    # u druveru by se muselo asi vyuzit dedicnosti trid... a udelat base tridu pro page. 
+    # U loggeru bud to stjene a nebo by slo vyuzit proste jen nastaveni loggingu a apk provolavat obecne logging.
+
     """Test úspěšného přihlášení uživatele."""
     login_page = LoginPage(driver, logger)
     inventory_page = InventoryPage(driver, logger)
@@ -138,3 +149,13 @@ def test_logout_a_user(driver, username, password, logger):
     menu_bar.press_logout()
     slowdown()
     login_page.we_are_on_page() 
+
+# TODO Lektor: celkove se me to libi. Je videt pouziti hodne veci z lekci, krasne vyuziti POM. Zjvene pouzite allure. krasa!
+# Rozhodne je to dobre napsane (nekde bych rekl skorko kopie lektora :-) - jde videt ze sis odnesla tipy co na lekcich rikam).
+
+#TIP: strtedni cast testu - nahodne pridavani - si neoveruje ze neco bylo pridano do kosiku, takze to jde udelat passed i kdyz se nic neprida. (vyskakuje me tam dialog s heslem co zablokuje test... tak jsem si toho vsiml)
+
+# jinak logger ma problemy s ceskymy znaky - jde to videt v logach. Prvadepodobne zdrojovy kod neni ulozen jako unicode ale jako cp1250. Doporucuji zkusit preulozit jako unicode8 a kdyz to nezabere. 
+# tak pohledat zda se da nak nastavit logovani jinych znaku...
+# a kdyz ani to nezabere proste to mit v anglictne nebo bez hacku a carek.
+# PS: mozna jsme to omylem, spatne preulozil ja.

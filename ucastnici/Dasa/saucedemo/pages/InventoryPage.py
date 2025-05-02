@@ -28,6 +28,8 @@ class InventoryPage:
             self.wait.until(EC.url_contains(self.INVENTORY_URL))
             # Počkáme na načtení produktů
             self.wait.until(EC.presence_of_element_located(self.PRODUCTS))
+            # TODO Lektor: toto cekani by nemelo byt potreba dle me pro overeni ze jsi na strance :-).
+
             self.logger.info("Stránka s produkty byla úspěšně načtena")
             return True
         except Exception as e:

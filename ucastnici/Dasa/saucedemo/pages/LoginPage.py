@@ -12,6 +12,8 @@ class LoginPage:
         self.driver = driver
         self.logger = logger
         self.url = "https://www.saucedemo.com/"
+        # TODO Lektor: tato stranka by se mela vzit z te konfigurace... .
+        # TODO Lektor: jinak moc pekne... .
 
     def open(self):
         """Otevře přihlašovací stránku."""
