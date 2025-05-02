@@ -34,6 +34,7 @@ class InventoryPage:
             logging.info(f"Item '{button}' was added to cart.")
 
         wait_for_element_with_text(self.driver, 5, (By.CSS_SELECTOR, "span[data-test='shopping-cart-badge']"), str(num_to_add))
+        #TODO Lektor koukam na hezke vylepseni asi meho kodu :-) ... . Pochvala... .
         cart_count = int(self.driver.find_element(*self.cart_badge).text)
         assert cart_count == num_to_add, f"Expected '{num_to_add}' items, but found '{cart_count}' in cart."
 
