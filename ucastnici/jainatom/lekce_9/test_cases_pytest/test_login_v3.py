@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from utilsPytes.utils import wait_for_element
+from utils import wait_for_element
 import os
 from saucedemo.LoginPage import LoginPage
 from saucedemo.InventoryPage import InventoryPage

@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from utils_pytest import wait_for_element, wait_for_element_with_text
+from utils import wait_for_element, wait_for_element_with_text
 import random
 import logging
 
