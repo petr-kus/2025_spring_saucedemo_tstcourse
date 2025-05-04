@@ -1,10 +1,7 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from utils import wait_for_element, wait_for_element_with_text
+from utils_pytest import wait_for_element, wait_for_element_with_text
 import random
 import logging
-import time
 
 class InventoryPage:
     add_to_cart_button = (By.XPATH, "//button[text()='Add to cart']")

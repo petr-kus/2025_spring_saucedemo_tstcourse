@@ -1,0 +1,1 @@
+login_page_url = "https://www.saucedemo.com/"

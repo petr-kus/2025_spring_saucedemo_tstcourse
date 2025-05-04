@@ -1,10 +1,9 @@
 *** Settings ***
-Documentation     Resource file for login.robot test containing keywords and variables
+Documentation     Resource file for Login page
 Library           SeleniumLibrary
 
 *** Variables ***
 ${LOGIN_URL}         https://www.saucedemo.com/
-${INVENTORY_URL}     https://www.saucedemo.com/inventory.html
 ${BROWSER}           Edge
 ${USERNAME_INPUT}    id=user-name
 ${PASSWORD_INPUT}    id=password
@@ -26,10 +25,6 @@ Login ${user} with ${password}
     Input Text       ${USERNAME_INPUT}    ${user}
     Input Text       ${PASSWORD_INPUT}    ${password}
     Click Button     ${LOGIN_BUTTON}
-
-User Is Logged
-    [Documentation]       Checks successful login by checking current page
-    Location Should Be    ${INVENTORY_URL}
 
 
     

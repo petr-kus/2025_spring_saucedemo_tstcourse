@@ -2,7 +2,8 @@
 Documentation     A test suite with positive and negative test scenarios.
 ...
 ...               Keywords are imported from the resource file
-Resource          ../utils_robot/login.resource
+Resource          ../utils_robot/login_page.resource
+Resource          ../utils_robot/inventory_page.resource
 Default Tags      positive
 
 *** Test Cases ***
